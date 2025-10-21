@@ -75,15 +75,25 @@ export const Dashboard: React.FC = () => {
 
   return (
     <div className="px-4">
-      <SearchBar value={searchTerm} onChange={handleSearchChange} />
-      <SortDropdown value={sortOption} onChange={handleSortChange} />
+      <div className="flex flex-col md:flex-row md:justify-center md:items-center gap-2 md:gap-4 mb-4">
+        <div className="w-full md:w-1/2">
+          <SearchBar value={searchTerm} onChange={handleSearchChange} />
+        </div>
+        <div className="w-full md:w-1/2">
+          <SortDropdown value={sortOption} onChange={handleSortChange} />
+        </div>
+      </div>
+
       <Grid countries={currentCountries} />
-      <PaginationControls
-        currentPage={currentPage}
-        totalPages={totalPages}
-        goToPreviousPage={goToPreviousPage}
-        goToNextPage={goToNextPage}
-      />
+
+      <div className="mt-4">
+        <PaginationControls
+          currentPage={currentPage}
+          totalPages={totalPages}
+          goToPreviousPage={goToPreviousPage}
+          goToNextPage={goToNextPage}
+        />
+      </div>
     </div>
   );
 };
