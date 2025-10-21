@@ -1,12 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useCountries } from "../hooks/useFetchCountries";
 import { Grid } from "./Grid";
+import { SearchBar } from "./SearchBar";
+import { PaginationControls } from "./PaginationControls";
 
 const ITEMS_PER_PAGE = 15;
 
 export const Dashboard: React.FC = () => {
   const { countries, loading, error } = useCountries();
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredCountries = useMemo(
+    () =>
+      countries.filter((country) =>
+        country.name.toLowerCase().includes(searchTerm.toLowerCase())
+      ),
+    [countries, searchTerm]
+  );
+
+  const totalPages = Math.ceil(filteredCountries.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const currentCountries = filteredCountries.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  );
+
+  const goToPreviousPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+  const goToNextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1); // Reset page on search
+  };
 
   if (loading)
     return (
@@ -22,46 +48,16 @@ export const Dashboard: React.FC = () => {
       </div>
     );
 
-  // Calculate pagination
-  const totalPages = Math.ceil(countries.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const currentCountries = countries.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-
-  const goToPreviousPage = () => {
-    setCurrentPage((prev) => Math.max(prev - 1, 1));
-  };
-
-  const goToNextPage = () => {
-    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-  };
-
   return (
     <div className="px-4">
-      {/* Grid of current page countries */}
+      <SearchBar value={searchTerm} onChange={handleSearchChange} />
       <Grid countries={currentCountries} />
-
-      {/* Pagination controls */}
-      <div className="flex justify-center items-center space-x-4 mt-6 mb-6">
-        <button
-          onClick={goToPreviousPage}
-          disabled={currentPage === 1}
-          className="px-4 py-2 bg-brandBlue text-white rounded disabled:opacity-50"
-        >
-          Previous
-        </button>
-
-        <span className="text-gray-700 font-medium">
-          Page {currentPage} of {totalPages}
-        </span>
-
-        <button
-          onClick={goToNextPage}
-          disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-brandBlue text-white rounded disabled:opacity-50"
-        >
-          Next
-        </button>
-      </div>
+      <PaginationControls
+        currentPage={currentPage}
+        totalPages={totalPages}
+        goToPreviousPage={goToPreviousPage}
+        goToNextPage={goToNextPage}
+      />
     </div>
   );
 };
