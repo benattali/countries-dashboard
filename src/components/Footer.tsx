@@ -27,6 +27,7 @@ export const Footer = () => {
                         href="https://github.com/benattali"
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="GitHub"
                         className="hover:text-black transition-colors"
                     >
                         <svg
@@ -45,6 +46,7 @@ export const Footer = () => {
                         href="https://www.linkedin.com/in/ben-attali/"
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="LinkedIn"
                         className="hover:text-blue-600 transition-colors"
                     >
                         <svg
