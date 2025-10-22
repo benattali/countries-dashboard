@@ -14,4 +14,4 @@ jobs:
         run: docker build -t countries-dashboard .
 
       - name: Run tests
-        run: docker run --rm -it countries-dashboard npm test -- --watchAll=false
+        run: docker run --rm countries-dashboard npm test -- --watchAll=false
