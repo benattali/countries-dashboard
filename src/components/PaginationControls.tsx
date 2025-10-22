@@ -1,5 +1,3 @@
-import React from "react";
-
 interface PaginationProps {
     currentPage: number;
     totalPages: number;
@@ -7,12 +5,12 @@ interface PaginationProps {
     goToNextPage: () => void;
 }
 
-export const PaginationControls: React.FC<PaginationProps> = ({
+export const PaginationControls = ({
     currentPage,
     totalPages,
     goToPreviousPage,
     goToNextPage,
-}) => (
+}: PaginationProps) => (
     <div className="flex justify-center items-center space-x-4 mt-6 mb-6">
         <button
             onClick={goToPreviousPage}

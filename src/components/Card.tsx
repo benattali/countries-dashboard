@@ -1,4 +1,3 @@
-import React from "react";
 import { Country } from "../types";
 
 export const Card = ({ name, capital, population, flag }: Country) => {

@@ -1,11 +1,9 @@
-import React from "react";
-
 interface SearchBarProps {
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const SearchBar: React.FC<SearchBarProps> = ({ value, onChange }) => (
+export const SearchBar = ({ value, onChange }: SearchBarProps) => (
     <div className="flex justify-center mb-4">
         <input
             type="text"

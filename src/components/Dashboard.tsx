@@ -1,13 +1,15 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useCountries } from "../hooks/useFetchCountries";
 import { Grid } from "./Grid";
 import { SearchBar } from "./SearchBar";
 import { PaginationControls } from "./PaginationControls";
 import { SortDropdown, SortOption } from "./SortControls";
+import { Loading } from "./Loading";
+import { Error } from "./Error";
 
 const ITEMS_PER_PAGE = 15;
 
-export const Dashboard: React.FC = () => {
+export const Dashboard = () => {
   const { countries, loading, error } = useCountries();
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -61,18 +63,10 @@ export const Dashboard: React.FC = () => {
   };
 
   if (loading)
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <p className="text-xl font-semibold text-gray-700">Loading countries...</p>
-      </div>
-    );
+    return <Loading />
 
   if (error)
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <p className="text-xl font-semibold text-red-600">{error || "Something went wrong"}</p>
-      </div>
-    );
+    return <Error error={error} />
 
   return (
     <div className="px-4">

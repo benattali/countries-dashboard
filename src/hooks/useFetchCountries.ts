@@ -1,4 +1,3 @@
-// src/hooks/useCountries.ts
 import { useState, useEffect } from "react";
 import { Country } from "../types";
 
@@ -20,9 +19,12 @@ export const useCountries = () => {
 
                 const data = await response.json();
 
+                console.log("mappedCountries", data);
+
+
                 const mappedCountries: Country[] = data.map((c: any) => ({
                     name: c.name.common,
-                    capital: c.capital ? c.capital[0] : "N/A",
+                    capital: c.capital.length > 0 ? c.capital[0] : "N/A",
                     population: c.population,
                     flag: c.flags.svg,
                 }));

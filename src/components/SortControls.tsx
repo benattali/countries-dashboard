@@ -1,5 +1,3 @@
-import React from "react";
-
 export type SortOption = "name-asc" | "name-desc" | "population-asc" | "population-desc";
 
 interface SortDropdownProps {
@@ -7,7 +5,7 @@ interface SortDropdownProps {
     onChange: (value: SortOption) => void;
 }
 
-export const SortDropdown: React.FC<SortDropdownProps> = ({ value, onChange }) => {
+export const SortDropdown = ({ value, onChange }: SortDropdownProps) => {
     return (
         <div className="flex justify-center mb-4">
             <select
