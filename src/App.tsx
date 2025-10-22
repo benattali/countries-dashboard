@@ -10,7 +10,7 @@ function App() {
         </h1>
       </header>
 
-      <main className="flex-grow">
+      <main className="flex-grow flex flex-col">
         <Dashboard />
       </main>
 

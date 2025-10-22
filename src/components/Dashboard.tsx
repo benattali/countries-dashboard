@@ -76,7 +76,9 @@ export const Dashboard = () => {
         </div>
       </div>
 
-      <Grid countries={currentCountries} />
+      <div className="flex-grow">
+        <Grid countries={currentCountries} />
+      </div>
 
       <PaginationControls
         currentPage={currentPage}

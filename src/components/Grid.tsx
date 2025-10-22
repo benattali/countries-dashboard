@@ -7,7 +7,7 @@ interface GridProps {
 
 export const Grid = ({ countries }: GridProps) => {
     return (
-        <div className="grid sm:grid-cols-1 md:grid-cols-3 grid-rows-5 gap-4 p-4">
+        <div className="grid gap-4 p-4 sm:grid-cols-1 md:grid-cols-3 auto-rows-auto">
             {countries.map((country) => (
                 <Card key={country.name} {...country} />
             ))}
