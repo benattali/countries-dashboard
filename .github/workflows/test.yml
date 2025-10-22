@@ -1,24 +1,17 @@
 name: Run Tests
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: push
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout the code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Build the Docker image
       - name: Build Docker image
         run: docker build -t countries-dashboard .
 
-      # 3. Run tests inside the container
       - name: Run tests
         run: docker run --rm countries-dashboard npm test
