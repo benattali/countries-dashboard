@@ -1,9 +1,8 @@
-// Footer.tsx
 import React from "react";
 
 export const Footer: React.FC = () => {
     return (
-        <footer className="bg-gray-200 dark:bg-gray-800 py-6 mt-8">
+        <footer className="bg-gray-200 dark:bg-gray-800 py-6 mt-4">
             <div className="max-w-7xl mx-auto px-4 text-center text-gray-700 dark:text-gray-300">
                 <p className="mb-1">
                     🌎 Countries Dashboard &copy; {new Date().getFullYear()}. All rights reserved.
@@ -58,22 +57,6 @@ export const Footer: React.FC = () => {
                             viewBox="0 0 24 24"
                         >
                             <path d="M4.98 3.5C3.34 3.5 2 4.84 2 6.5s1.34 3 2.98 3c1.64 0 2.98-1.34 2.98-3S6.62 3.5 4.98 3.5zM2.5 21.5h5V9h-5v12.5zM9.5 9h4.8v1.7h.07c.67-1.27 2.31-2.61 4.76-2.61 5.09 0 6.02 3.36 6.02 7.72V21.5h-5v-6.5c0-1.55-.03-3.54-2.16-3.54-2.16 0-2.49 1.68-2.49 3.42V21.5h-5v-12.5z" />
-                        </svg>
-                    </a>
-
-                    {/* Email */}
-                    <a
-                        href="mailto:ben.attali8@gmail.com"
-                        className="hover:text-red-600 transition-colors"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path d="M12 13.065L0 5.25V18c0 1.1.9 2 2 2h20a2 2 0 002-2V5.25l-12 7.815zm0-2.13L22.92 4H1.08L12 10.935z" />
                         </svg>
                     </a>
                 </div>

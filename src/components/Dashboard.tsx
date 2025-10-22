@@ -10,7 +10,7 @@ const ITEMS_PER_PAGE = 15;
 export const Dashboard: React.FC = () => {
   const { countries, loading, error } = useCountries();
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [sortOption, setSortOption] = useState<SortOption>("name-asc");
 
   const filteredCountries = useMemo(
@@ -57,6 +57,7 @@ export const Dashboard: React.FC = () => {
 
   const handleSortChange = (value: SortOption) => {
     setSortOption(value);
+    setCurrentPage(1); // reset page on search
   };
 
   if (loading)
@@ -75,7 +76,7 @@ export const Dashboard: React.FC = () => {
 
   return (
     <div className="px-4">
-      <div className="flex flex-col md:flex-row md:justify-center md:items-center gap-2 md:gap-4 mb-4">
+      <div className="flex flex-col md:flex-row md:justify-center md:items-center gap-2 md:gap-4">
         <div className="w-full md:w-1/2">
           <SearchBar value={searchTerm} onChange={handleSearchChange} />
         </div>
@@ -86,14 +87,13 @@ export const Dashboard: React.FC = () => {
 
       <Grid countries={currentCountries} />
 
-      <div className="mt-4">
-        <PaginationControls
-          currentPage={currentPage}
-          totalPages={totalPages}
-          goToPreviousPage={goToPreviousPage}
-          goToNextPage={goToNextPage}
-        />
-      </div>
+      <PaginationControls
+        currentPage={currentPage}
+        totalPages={totalPages}
+        goToPreviousPage={goToPreviousPage}
+        goToNextPage={goToNextPage}
+      />
+
     </div>
   );
 };
