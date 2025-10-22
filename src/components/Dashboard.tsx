@@ -49,9 +49,6 @@ export const Dashboard = () => {
     startIndex + ITEMS_PER_PAGE
   );
 
-  const goToPreviousPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
-  const goToNextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
     setCurrentPage(1); // reset page on search
@@ -84,8 +81,7 @@ export const Dashboard = () => {
       <PaginationControls
         currentPage={currentPage}
         totalPages={totalPages}
-        goToPreviousPage={goToPreviousPage}
-        goToNextPage={goToNextPage}
+        onPageChange={setCurrentPage}
       />
 
     </div>

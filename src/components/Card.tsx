@@ -5,9 +5,10 @@ export const Card = ({ name, capital, population, flag }: Country) => {
         <div className="bg-white rounded-lg shadow-md p-4 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
             <img
                 src={flag}
-                alt={`${name} flag`}
-                className="w-12 h-8 object-cover rounded-sm mb-2"
+                alt={`Flag of ${name}`}
+                className="w-12 h-8 object-cover rounded-md border border-gray-200"
             />
+
             <h2 className="text-xl font-bold mt-2">{name}</h2>
             <p className="text-brandGray-600">Capital: {capital}</p>
             <p className="text-brandGray-600">Population: {population.toLocaleString()}</p>

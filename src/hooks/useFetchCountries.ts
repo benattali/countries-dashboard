@@ -19,9 +19,6 @@ export const useCountries = () => {
 
                 const data = await response.json();
 
-                console.log("mappedCountries", data);
-
-
                 const mappedCountries: Country[] = data.map((c: any) => ({
                     name: c.name.common,
                     capital: c.capital.length > 0 ? c.capital[0] : "N/A",
