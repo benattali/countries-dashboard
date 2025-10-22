@@ -33,4 +33,8 @@ To run locally, follow these steps:
 ### *for development*
 run `docker run -p 3000:3000 -v $(pwd):/app -v /app/node_modules countries-dashboard` for live reload
 
+## Testing
+
+Run `docker run --rm countries-dashboard npm test`
+
 *Data provided by* [REST Countries API](https://restcountries.com/).
