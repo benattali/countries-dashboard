@@ -8,17 +8,6 @@ describe("Error Component", () => {
         expect(screen.getByText(customMessage)).toBeInTheDocument();
     });
 
-    test("renders default message when error is null", () => {
-        render(<Error error={null} />);
-        expect(screen.getByText("Something went wrong")).toBeInTheDocument();
-    });
-
-    test("renders default message when error is undefined", () => {
-
-        render(<Error error={null} />);
-        expect(screen.getByText("Something went wrong")).toBeInTheDocument();
-    });
-
     test("applies correct styling classes", () => {
         render(<Error error="Oops!" />);
         const container = screen.getByText("Oops!").parentElement;

@@ -28,7 +28,7 @@ export const useCountries = () => {
 
                 setCountries(mappedCountries);
             } catch (err: any) {
-                setError(err.message || "Something went wrong");
+                setError("It appears something went wrong. You can try to refresh the page or contact us with the issue.");
             } finally {
                 setLoading(false);
             }
