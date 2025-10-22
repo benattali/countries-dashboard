@@ -19,7 +19,7 @@ Filter, sort, and paginate country data fetched from the **REST Countries API**.
 - React Testing Library + Jest
 - REST Countries API
 - Docker for containerized development
-- Github Actions to run the test suites on every push/pr to master
+- Github Actions to run the test suites on every push
 
 ## Getting Started
 
