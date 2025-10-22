@@ -36,6 +36,6 @@ run `docker run -p 3000:3000 -v $(pwd):/app -v /app/node_modules countries-dashb
 
 ## Testing
 
-Run `docker run --rm countries-dashboard npm test`
+Run `docker run --rm -it countries-dashboard npm test -- --watchAll=false`
 
 *Data provided by* [REST Countries API](https://restcountries.com/).
